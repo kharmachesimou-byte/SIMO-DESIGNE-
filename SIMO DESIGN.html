@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simo | Web designer, logo, flyer, carte de visite et site web</title>
+    <meta name="description" content="Simo, web designer à Berkane : création de logos, flyers, cartes de visite, sites web, développement front-end et back-end, sécurité web et contenu digital.">
+    <meta name="theme-color" content="#111111">
+
+    <!-- Favicon (disque doré, aucun fichier à ajouter) -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23111'/%3E%3Cpath d='M32 8a24 24 0 0 1 0 48z' fill='%23caa34d'/%3E%3C/svg%3E">
+
+    <!-- Polices (si le chargement échoue, le site utilise Segoe UI) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==========================================================
+           PALETTE
+           ========================================================== */
+        :root {
+            --noir: #111;
+            --noir-profond: #000;
+            --gris-fonce: #333;
+            --texte: #222;
+            --blanc: #fff;
+            --gris-clair: #f4f4f4;
+            --or: #caa34d;
+            --or-clair: #e0bb62;
+
+            --police-titre: 'Sora', 'Segoe UI', Tahoma, sans-serif;
+            --police-texte: 'Manrope', 'Segoe UI', Tahoma, sans-serif;
+
+            --hauteur-header: 76px;
+        }
+
+        /* ==========================================================
+           BASE
+           ========================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--police-texte);
+            color: var(--texte);
+            background: var(--blanc);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--police-titre);
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        section[id] {
+            scroll-margin-top: var(--hauteur-header);
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--or);
+            outline-offset: 3px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1120px;
+            margin: auto;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            top: 8px;
+            background: var(--or);
+            color: var(--noir-profond);
+            padding: 10px 16px;
+            font-weight: 700;
+            z-index: 200;
+            border-radius: 4px;
+        }
+
+        .skip-link:focus {
+            left: 8px;
+        }
+
+        /* ==========================================================
+           BOUTONS
+           ========================================================== */
+        .btn {
+            display: inline-block;
+            font: inherit;
+            font-weight: 700;
+            text-decoration: none;
+            text-align: center;
+            padding: 14px 30px;
+            border-radius: 4px;
+            border: 2px solid var(--or);
+            background: var(--or);
+            color: var(--noir-profond);
+            cursor: pointer;
+            transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background: var(--or-clair);
+            border-color: var(--or-clair);
+            transform: translateY(-2px);
+        }
+
+        .btn-contour {
+            background: transparent;
+            color: var(--blanc);
+            border-color: rgba(255, 255, 255, 0.45);
+        }
+
+        .btn-contour:hover {
+            background: var(--blanc);
+            border-color: var(--blanc);
+            color: var(--noir-profond);
+        }
+
+        /* ==========================================================
+           HEADER
+           ========================================================== */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--noir);
+            border-bottom: 2px solid var(--or);
+        }
+
+        .header-content {
+            height: var(--hauteur-header);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .marque {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--blanc);
+            font-family: var(--police-titre);
+            font-weight: 700;
+            font-size: 1.35rem;
+            letter-spacing: -0.02em;
+        }
+
+        .marque-logo {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: linear-gradient(to right, var(--noir) 50%, var(--or) 50%);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            flex-shrink: 0;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: var(--blanc);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.25s ease;
+        }
+
+        .nav-links a:hover {
+            border-bottom-color: var(--or);
+        }
+
+        .nav-links .nav-cta {
+            background: var(--or);
+            color: var(--noir-profond);
+            font-weight: 700;
+            padding: 10px 22px;
+            border-radius: 4px;
+            border-bottom: 0;
+            transition: background 0.25s ease;
+        }
+
+        .nav-links .nav-cta:hover {
+            background: var(--or-clair);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: var(--blanc);
+            font: inherit;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* ==========================================================
+           HERO
+           ========================================================== */
+        .hero {
+            background: linear-gradient(to right, var(--noir-profond), var(--gris-fonce));
+            color: var(--blanc);
+            padding: 110px 0 120px;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5.2vw, 3.9rem);
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .hero-texte {
+            font-size: clamp(1.02rem, 1.8vw, 1.2rem);
+            max-width: 36em;
+            opacity: 0.9;
+            margin-bottom: 38px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        /* Emblème en CSS pur : demi-disque et cercles */
+        .emblem {
+            position: relative;
+            width: min(400px, 80vw);
+            aspect-ratio: 1;
+            margin-inline: auto;
+        }
+
+        .emblem span {
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .emblem .anneau-1 {
+            inset: 0;
+            border: 1px solid rgba(202, 163, 77, 0.3);
+        }
+
+        .emblem .anneau-2 {
+            inset: 12%;
+            border: 1px solid rgba(202, 163, 77, 0.55);
+        }
+
+        .emblem .anneau-3 {
+            inset: 24%;
+            border: 3px solid var(--or);
+        }
+
+        .emblem .disque {
+            inset: 36%;
+            background: linear-gradient(to right, var(--noir) 50%, var(--or) 50%);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        /* Une seule animation : l'entrée du hero */
+        @media (prefers-reduced-motion: no-preference) {
+            .hero-grid > div:first-child {
+                animation: entree 0.8s ease both;
+            }
+
+            .emblem {
+                animation: entree 1s 0.15s ease both;
+            }
+
+            @keyframes entree {
+                from { opacity: 0; transform: translateY(18px); }
+                to   { opacity: 1; transform: translateY(0); }
+            }
+        }
+
+        /* ==========================================================
+           SECTIONS
+           ========================================================== */
+        .section {
+            padding: 96px 0;
+        }
+
+        .section.clair {
+            background: var(--gris-clair);
+        }
+
+        .section.sombre {
+            background: var(--noir);
+            color: var(--blanc);
+        }
+
+        .section h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 56px;
+            height: 3px;
+            background: var(--or);
+        }
+
+        .intro {
+            max-width: 60ch;
+            margin-bottom: 56px;
+            color: #555;
+        }
+
+        .sombre .intro {
+            color: rgba(255, 255, 255, 0.78);
+        }
+
+        /* ==========================================================
+           SERVICES (colonnes séparées par des filets)
+           ========================================================== */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            background: var(--blanc);
+            border-top: 3px solid var(--or);
+            border-radius: 0 0 6px 6px;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .service {
+            padding: 38px 34px 42px;
+        }
+
+        .service + .service {
+            border-left: 1px solid #e3e3e3;
+        }
+
+        .service h3 {
+            font-size: 1.35rem;
+            margin-bottom: 8px;
+        }
+
+        .service > p {
+            color: #555;
+            margin-bottom: 22px;
+            font-size: 0.97rem;
+        }
+
+        .service ul {
+            list-style: none;
+        }
+
+        .service li {
+            padding: 11px 0;
+            border-top: 1px solid #e8e8e8;
+            font-weight: 600;
+            font-size: 0.98rem;
+        }
+
+        .service li small {
+            display: block;
+            font-weight: 400;
+            color: #666;
+            font-size: 0.88rem;
+            line-height: 1.5;
+            margin-top: 2px;
+        }
+
+        /* ==========================================================
+           MÉTHODE (vraie séquence : numérotation justifiée)
+           ========================================================== */
+        .etapes {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            counter-reset: etape;
+        }
+
+        .etapes li {
+            counter-increment: etape;
+            padding: 30px 28px 10px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.25);
+            position: relative;
+        }
+
+        .etapes li::before {
+            content: counter(etape);
+            position: absolute;
+            top: -17px;
+            left: 0;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--or);
+            color: var(--noir-profond);
+            font-family: var(--police-titre);
+            font-weight: 700;
+            display: grid;
+            place-items: center;
+        }
+
+        .etapes h3 {
+            font-size: 1.15rem;
+            margin: 14px 0 8px;
+        }
+
+        .etapes p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        /* ==========================================================
+           À PROPOS
+           ========================================================== */
+        .apropos {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 64px;
+            align-items: start;
+        }
+
+        .apropos p {
+            max-width: 60ch;
+            margin-bottom: 18px;
+        }
+
+        .engagements {
+            list-style: none;
+            background: var(--blanc);
+            border-left: 4px solid var(--or);
+            border-radius: 0 6px 6px 0;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+            padding: 10px 30px;
+        }
+
+        .engagements li {
+            padding: 18px 0;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .engagements li:last-child {
+            border-bottom: 0;
+        }
+
+        .engagements strong {
+            display: block;
+            font-family: var(--police-titre);
+            font-size: 1.05rem;
+            margin-bottom: 2px;
+        }
+
+        .engagements span {
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        /* ==========================================================
+           CONTACT
+           ========================================================== */
+        .contact {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .contact .intro {
+            margin-bottom: 32px;
+        }
+
+        .coordonnees {
+            list-style: none;
+        }
+
+        .coordonnees li {
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .coordonnees li:first-child {
+            border-top: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .coordonnees .libelle {
+            display: block;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+        .coordonnees a,
+        .coordonnees .valeur {
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--blanc);
+        }
+
+        .coordonnees a {
+            border-bottom: 2px solid var(--or);
+            transition: background 0.25s ease;
+        }
+
+        .coordonnees a:hover {
+            background: rgba(202, 163, 77, 0.25);
+        }
+
+        .contact-actions {
+            margin-top: 36px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        /* ==========================================================
+           QR CODE WHATSAPP
+           ========================================================== */
+        .qr-bloc {
+            display: flex;
+            align-items: center;
+            gap: 26px;
+            margin-top: 34px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-left: 4px solid var(--or);
+            border-radius: 0 6px 6px 0;
+        }
+
+        /* Fond blanc obligatoire autour du QR pour qu'il soit lisible */
+        #qrcode {
+            padding: 12px;
+            background: var(--blanc);
+            border-radius: 6px;
+            line-height: 0;
+            flex-shrink: 0;
+            min-width: 100px;
+            min-height: 100px;
+        }
+
+        #qrcode img {
+            display: block;
+        }
+
+        .qr-texte h3 {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+
+        .qr-texte p {
+            font-size: 0.92rem;
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 16px;
+        }
+
+        .btn-petit {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 560px) {
+            .qr-bloc {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* ==========================================================
+           FOOTER
+           ========================================================== */
+        .footer {
+            background: var(--noir-profond);
+            color: rgba(255, 255, 255, 0.75);
+            border-top: 2px solid var(--or);
+            padding: 26px 0;
+            font-size: 0.9rem;
+        }
+
+        .footer .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .footer a {
+            color: var(--blanc);
+        }
+
+        /* ==========================================================
+           RESPONSIVE
+           ========================================================== */
+        @media (max-width: 960px) {
+            .hero-grid,
+            .apropos,
+            .contact {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .emblem {
+                width: min(300px, 70vw);
+                order: -1;
+            }
+
+            .services {
+                grid-template-columns: 1fr;
+            }
+
+            .service + .service {
+                border-left: 0;
+                border-top: 1px solid #e3e3e3;
+            }
+
+            .etapes {
+                grid-template-columns: 1fr 1fr;
+                row-gap: 40px;
+            }
+        }
+
+        @media (max-width: 760px) {
+            :root {
+                --hauteur-header: 68px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 100%;
+                background: var(--noir);
+                border-bottom: 2px solid var(--or);
+                display: none;
+            }
+
+            .nav.ouvert {
+                display: block;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding: 8px 5% 20px;
+            }
+
+            .nav-links li a {
+                display: block;
+                padding: 14px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            }
+
+            .nav-links .nav-cta {
+                margin-top: 14px;
+                text-align: center;
+            }
+
+            .hero {
+                padding: 64px 0 80px;
+            }
+
+            .section {
+                padding: 64px 0;
+            }
+
+            .etapes {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-actions .btn,
+            .contact-actions .btn {
+                width: 100%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition: none !important;
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#contenu" class="skip-link">Aller au contenu</a>
+
+    <!-- ===================== HEADER ===================== -->
+    <header class="header">
+        <div class="container header-content">
+            <a href="#accueil" class="marque" aria-label="Simo, retour à l'accueil">
+                <span class="marque-logo" aria-hidden="true"></span>
+                Simo
+            </a>
+
+            <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="menu">Menu</button>
+
+            <nav class="nav" id="menu" aria-label="Navigation principale">
+                <ul class="nav-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#methode">Méthode</a></li>
+                    <li><a href="#apropos">À propos</a></li>
+                    <li><a href="#contact" class="nav-cta">Me contacter</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="contenu">
+
+        <!-- ===================== HERO ===================== -->
+        <section class="hero" id="accueil">
+            <div class="container hero-grid">
+                <div>
+                    <h1>Je crée des identités visuelles et des sites web qui inspirent confiance.</h1>
+                    <p class="hero-texte">
+                        Je suis Simo, web designer. Logo, flyer, carte de visite, site web, développement
+                        front-end et back-end, sécurité web : un seul interlocuteur, du premier croquis
+                        à la mise en ligne.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn">Parlons de votre projet</a>
+                        <a href="#services" class="btn btn-contour">Voir mes services</a>
+                    </div>
+                </div>
+
+                <div class="emblem" aria-hidden="true">
+                    <span class="anneau-1"></span>
+                    <span class="anneau-2"></span>
+                    <span class="anneau-3"></span>
+                    <span class="disque"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== SERVICES ===================== -->
+        <section class="section clair" id="services">
+            <div class="container">
+                <h2>Ce que je réalise pour vous</h2>
+                <p class="intro">
+                    Du support imprimé au site complet, chaque création suit la même exigence :
+                    un rendu soigné, cohérent avec votre marque et pensé pour vos clients.
+                </p>
+
+                <div class="services">
+
+                    <article class="service">
+                        <h3>Design et contenu digital</h3>
+                        <p>L'image de votre marque, sur tous les supports.</p>
+                        <ul>
+                            <li>Logo et identité visuelle
+                                <small>Un logo mémorable et une charte graphique cohérente.</small>
+                            </li>
+                            <li>Flyers
+                                <small>Des supports clairs, faits pour être lus et gardés.</small>
+                            </li>
+                            <li>Cartes de visite
+                                <small>Une première impression professionnelle, prête à imprimer.</small>
+                            </li>
+                            <li>Contenu digital
+                                <small>Visuels pour réseaux sociaux et bannières publicitaires.</small>
+                            </li>
+                        </ul>
+                    </article>
+
+                    <article class="service">
+                        <h3>Sites web</h3>
+                        <p>Des sites rapides, lisibles sur mobile et faciles à faire évoluer.</p>
+                        <ul>
+                            <li>Création de site web
+                                <small>De la maquette à la mise en ligne.</small>
+                            </li>
+                            <li>Développement front-end
+                                <small>Interface soignée, responsive et accessible.</small>
+                            </li>
+                            <li>Développement back-end
+                                <small>Fonctionnalités, formulaires et gestion des données.</small>
+                            </li>
+                        </ul>
+                    </article>
+
+                    <article class="service">
+                        <h3>Sécurité web</h3>
+                        <p>Un site beau, mais aussi fiable pour vos visiteurs.</p>
+                        <ul>
+                            <li>Protection des formulaires
+                                <small>Validation des données et limitation des abus.</small>
+                            </li>
+                            <li>Bonnes pratiques de sécurité
+                                <small>HTTPS, mises à jour et configuration prudente.</small>
+                            </li>
+                            <li>Vérification de votre site
+                                <small>Repérage des points faibles courants et recommandations.</small>
+                            </li>
+                        </ul>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== MÉTHODE ===================== -->
+        <section class="section sombre" id="methode">
+            <div class="container">
+                <h2>Comment on travaille ensemble</h2>
+                <p class="intro">
+                    Un déroulé simple, pour que vous sachiez toujours où en est votre projet.
+                </p>
+
+                <ol class="etapes">
+                    <li>
+                        <h3>Écoute</h3>
+                        <p>Nous définissons vos besoins, votre cible et vos objectifs.</p>
+                    </li>
+                    <li>
+                        <h3>Conception</h3>
+                        <p>Je propose une direction visuelle et une structure à valider ensemble.</p>
+                    </li>
+                    <li>
+                        <h3>Réalisation</h3>
+                        <p>Je crée, je développe et j'intègre vos retours à chaque étape.</p>
+                    </li>
+                    <li>
+                        <h3>Livraison</h3>
+                        <p>Vous recevez des fichiers prêts à l'emploi, ou un site en ligne et testé.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- ===================== À PROPOS ===================== -->
+        <section class="section clair" id="apropos">
+            <div class="container apropos">
+                <div>
+                    <h2>À propos de moi</h2>
+                    <p>
+                        Je m'appelle Simo, je suis web designer. Je travaille à la fois sur le design
+                        et sur le développement : c'est ce qui me permet de livrer un résultat cohérent,
+                        de l'identité visuelle jusqu'au site en ligne.
+                    </p>
+                    <p>
+                        Pour moi, le design n'est pas qu'une question d'esthétique. Il sert à transmettre
+                        vos valeurs, à créer de la confiance et à rendre votre activité plus visible.
+                    </p>
+                </div>
+
+                <ul class="engagements">
+                    <li>
+                        <strong>Qualité</strong>
+                        <span>Chaque détail est vérifié avant la livraison.</span>
+                    </li>
+                    <li>
+                        <strong>Respect des délais</strong>
+                        <span>Un calendrier clair, défini dès le départ.</span>
+                    </li>
+                    <li>
+                        <strong>Communication directe</strong>
+                        <span>Vous échangez avec la personne qui réalise votre projet.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ===================== CONTACT ===================== -->
+        <section class="section sombre" id="contact">
+            <div class="container contact">
+                <div>
+                    <h2>Contactez-moi</h2>
+                    <p class="intro">
+                        Décrivez-moi votre projet en quelques lignes. Je vous réponds rapidement
+                        avec une première proposition.
+                    </p>
+
+                    <div class="contact-actions">
+                        <a class="btn" target="_blank" rel="noopener"
+                           href="https://wa.me/212702263856?text=Bonjour%20Simo%2C%20j%27ai%20un%20projet%20et%20je%20souhaite%20en%20discuter.">
+                            Écrire sur WhatsApp
+                        </a>
+                        <a class="btn btn-contour" href="mailto:kharmachesimou@gmail.com">Envoyer un e-mail</a>
+                    </div>
+                </div>
+
+                <div>
+                    <ul class="coordonnees">
+                        <li>
+                            <span class="libelle">E-mail</span>
+                            <a href="mailto:kharmachesimou@gmail.com">kharmachesimou@gmail.com</a>
+                        </li>
+                        <li>
+                            <span class="libelle">Téléphone et WhatsApp</span>
+                            <a href="tel:+212702263856">07 02 26 38 56</a>
+                        </li>
+                        <li>
+                            <span class="libelle">Facebook</span>
+                            <!-- Remplace ce lien par celui de ton profil (voir explication) -->
+                            <a href="https://www.facebook.com/search/top/?q=simou%20kharmache"
+                               target="_blank" rel="noopener">Simou Kharmache</a>
+                        </li>
+                        <li>
+                            <span class="libelle">Localisation</span>
+                            <span class="valeur">Berkane, Maroc</span>
+                        </li>
+                    </ul>
+
+                    <!-- QR CODE WHATSAPP -->
+                    <div class="qr-bloc">
+                        <div id="qrcode" aria-label="QR code pour ouvrir WhatsApp"></div>
+                        <div class="qr-texte">
+                            <h3>Scannez pour m'écrire sur WhatsApp</h3>
+                            <p>Ouvrez l'appareil photo de votre téléphone et visez le code.</p>
+                            <button type="button" id="btn-telecharger" class="btn btn-contour btn-petit">
+                                Télécharger le QR code
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="footer">
+        <div class="container">
+            <span>© <span id="annee">2026</span> Simo. Tous droits réservés.</span>
+            <a href="#accueil">Retour en haut</a>
+        </div>
+    </footer>
+
+    <!-- Bibliothèque QR code (nécessite une connexion internet) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <script>
+        // ====== À MODIFIER ICI SI BESOIN ======
+        // Numéro au format international, sans + ni espaces (Maroc : 212 + numéro sans le 0)
+        var NUMERO_WHATSAPP = "212702263856";
+        // Message pré-rempli qui s'affiche dans WhatsApp
+        var MESSAGE = "Bonjour Simo, j'ai un projet et je souhaite en discuter.";
+        // =====================================
+
+        // Menu mobile
+        var bouton = document.getElementById("menu-toggle");
+        var menu = document.getElementById("menu");
+
+        bouton.addEventListener("click", function () {
+            var ouvert = menu.classList.toggle("ouvert");
+            bouton.setAttribute("aria-expanded", ouvert);
+        });
+
+        menu.addEventListener("click", function (e) {
+            if (e.target.tagName === "A") {
+                menu.classList.remove("ouvert");
+                bouton.setAttribute("aria-expanded", "false");
+            }
+        });
+
+        // QR code WhatsApp (même lien que le bouton WhatsApp)
+        var lienWhatsApp = "https://wa.me/" + NUMERO_WHATSAPP + "?text=" + encodeURIComponent(MESSAGE);
+
+        try {
+            new QRCode(document.getElementById("qrcode"), {
+                text: lienWhatsApp,
+                width: 160,
+                height: 160,
+                colorDark: "#111111",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.M
+            });
+        } catch (e) {
+            document.getElementById("qrcode").textContent = "QR code indisponible.";
+        }
+
+        // Téléchargement du QR code en image PNG
+        document.getElementById("btn-telecharger").addEventListener("click", function () {
+            var canvas = document.querySelector("#qrcode canvas");
+            if (!canvas) { return; }
+            var a = document.createElement("a");
+            a.href = canvas.toDataURL("image/png");
+            a.download = "qr-whatsapp-simo.png";
+            a.click();
+        });
+
+        // Année automatique dans le pied de page
+        document.getElementById("annee").textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
